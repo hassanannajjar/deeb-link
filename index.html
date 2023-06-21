@@ -1,0 +1,33 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Open Deep Link</title>
+</head>
+<body>
+  <script>
+    function redirectToAppStore() {
+      var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+      
+      // Check if the user agent contains "Android" or "Linux" to detect Android devices
+      if (/android/i.test(userAgent)) {
+        window.location.href = 'https://play.google.com/store/apps/details?id=com.aljabr.laundry';
+      } else {
+        // Redirect to the App Store for iOS devices
+        window.location.href = 'https://itunes.apple.com/app/1581997861';
+      }
+    }
+
+    function openApp() {
+      window.location.href = 'com.aljabr.laundry://';
+
+      // If the app doesn't open, redirect to the app store after a delay
+      setTimeout(redirectToAppStore, /android/i.test(userAgent)?  5000 : 1000); // Adjust the delay as needed
+    }
+
+    openApp();
+
+  </script>
+</body>
+</html>
