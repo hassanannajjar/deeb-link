@@ -7,11 +7,11 @@
 </head>
 <body>
   <script>
+    var isAndroid = navigator.userAgent.match(/Android/i);
     function redirectToAppStore() {
-      var userAgent = navigator.userAgent || navigator.vendor || window.opera;
       
       // Check if the user agent contains "Android" or "Linux" to detect Android devices
-      if (/android/i.test(userAgent)) {
+      if (isAndroid) {
         window.location.href = 'https://play.google.com/store/apps/details?id=com.aljabr.laundry';
       } else {
         // Redirect to the App Store for iOS devices
@@ -23,7 +23,7 @@
       window.location.href = 'com.aljabr.laundry://';
 
       // If the app doesn't open, redirect to the app store after a delay
-      setTimeout(redirectToAppStore, /android/i.test(userAgent)?  5000 : 1000); // Adjust the delay as needed
+      setTimeout(redirectToAppStore, isAndroid?  5000 : 1000); // Adjust the delay as needed
     }
 
     openApp();
